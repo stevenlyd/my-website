@@ -1,0 +1,1 @@
+export const DEFAULT_TRANSITION = 'backgorund-image 0.25s ease-in-out, background-color 0.25s ease-in-out, color 0.25s ease-in-out'
