@@ -7,7 +7,11 @@ import {useMediaQuery} from "@mui/material";
 const fetcher = (url: string) => fetch(url + new URLSearchParams({
     sort: '-created',
 }), {
-    method: 'get'
+    method: 'get',
+    cache:'force-cache',
+    next: {
+        revalidate: 60,
+    }
 }).then((res) => res.json())
 
 export default function Trips() {

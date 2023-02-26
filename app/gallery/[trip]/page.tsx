@@ -6,6 +6,9 @@ const fetchPhotos = (url: string) => fetch(url + new URLSearchParams({
 }), {
     method: 'get',
     cache:'force-cache',
+    next: {
+        revalidate: 60,
+    }
 }).then((res) => res.json())
 
 export default async function Trips({params}: { params: { trip: string } }) {

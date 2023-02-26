@@ -7,6 +7,9 @@ const fetchHomePagePhoto = () => fetch(`https://steven-pocketbase.fly.dev/api/co
 }), {
     method: 'get',
     cache: 'force-cache',
+    next: {
+        revalidate: 60,
+    }
 }).then((res) => res.json())
 
 export default async function Home() {
