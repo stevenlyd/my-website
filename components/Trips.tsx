@@ -18,7 +18,6 @@ export default function Trips() {
     const {data, error, isLoading} = useSWR('https://steven-pocketbase.fly.dev/api/collections/trips/records?', fetcher)
     const mobile = !useMediaQuery('(min-width:700px)')
     const currentPath = usePathname()
-    console.log(data)
     return (
         <div style={{
             position: 'sticky',

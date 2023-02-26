@@ -25,7 +25,7 @@ export async function generateStaticParams() {
         sort: '-created',
         expand: 'photos',
     }), {
-        method: 'get'
+        method: 'get',
     }).then((res) => res.json())
 
     const data = await fetcher()
