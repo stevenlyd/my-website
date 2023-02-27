@@ -40,6 +40,7 @@ export default function RootLayout({children,}: { children: React.ReactNode }) {
                         },
                         background: {
                             paper: '#1a1a1a',
+                            default: '#1a1a1a',
                         },
                     }),
             },
