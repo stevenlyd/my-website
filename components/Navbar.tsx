@@ -26,13 +26,14 @@ export default function Navbar(navbarProps: NavbarProps) {
                 justifyContent: 'space-between',
                 position: 'fixed',
                 height: `${scrollPos >= 120 ? '70px' : '120px'}`,
-                transition: 'height 0.5s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.5s ease-in-out, background-color 0.25s ease-in-out',
-                boxShadow: `${scrollPos >= 120 ? 'rgb(0 0 0 / 15%) 0px 10px 6px' : 'none'}`,
+                transition: 'height 0.5s ease-in-out, opacity 0.5s linear, box-shadow 0.5s linear, background-color 0.25s linear',
+                boxShadow: `${scrollPos >= 120 || mobile ? 'rgb(0 0 0 / 15%) 0px 10px 6px' : 'none'}`,
                 backgroundColor: 'background.paper',
                 opacity: `${scrollPos >= 120 ? '0.88' : '1'}`,
                 width: '100%',
                 top: '0px',
                 left: '0px',
+                zIndex: '1400',
             }}
             style={{
                 padding: `${mobile ? '0px 25px 0px 25px' : '25px 75px 25px 75px'}`,

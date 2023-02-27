@@ -2,7 +2,7 @@ import React from "react";
 import useSWR from 'swr'
 import Link from "next/link";
 import {usePathname} from "next/navigation";
-import {useMediaQuery} from "@mui/material";
+import {Typography, useMediaQuery} from "@mui/material";
 
 const fetcher = (url: string) => fetch(url + new URLSearchParams({
     sort: '-created',
@@ -26,7 +26,7 @@ export default function Trips() {
             display: 'flex',
             flexDirection: `${mobile ? 'row' : 'column'}`,
             justifyContent: `${mobile ? 'space-around' : 'start'}`,
-            margin: `${mobile ? '0px 0px 25px 0px' : '0px 25px 0px 0px'}`,
+            margin: `${mobile ? '30px 0px 25px 0px' : '0px 25px 0px 0px'}`,
         }}>
             {!isLoading && data.items.map((trip: any, index: number) => {
                 return (
@@ -35,7 +35,9 @@ export default function Trips() {
                         textUnderlineOffset:'8px',
                         color: 'inherit',
                     }}>
-                        <h4>{trip.name}</h4>
+                        <Typography variant='h6' sx={{
+                            zIndex: '1300',
+                        }}>{trip.name}</Typography>
                     </Link>
                 )
             })}
