@@ -35,7 +35,6 @@ export default function Trips() {
                         textUnderlineOffset: '8px',
                         color: 'inherit',
                     }}
-                          scroll={false}
                     >
                         <h3 style={{
                             zIndex: '1300',
