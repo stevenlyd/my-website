@@ -8,7 +8,7 @@ export default function Photos({photos}: { photos: any[] }) {
         <Stack spacing={10}>
             {photos && photos.map((photo: any, index: number) => {
                 return (
-                    <div key={photo.id} style={{
+                    <div id={photo.id} key={photo.id} style={{
                         display: 'flex',
                         justifyContent: 'center',
                         width: '100%',
