@@ -2,6 +2,7 @@
 import {Stack} from "@mui/material";
 import SImage from "@/components/SImage";
 import Link from "next/link";
+import {API} from "@/public/variables";
 
 export default function Photos({photos}: { photos: any[] }) {
     return (
@@ -16,7 +17,7 @@ export default function Photos({photos}: { photos: any[] }) {
                     }}>
                         <Link href={`/gallery/${photo.expand.trip.slug}/${photo.slug}`}>
                             <SImage
-                                src={`https://steven-pocketbase.fly.dev/api/files/photos/${photo.id}/${photo.photo}`}
+                                src={`${API}/files/photos/${photo.id}/${photo.photo}`}
                                 alt={photo.id}
                                 transition={{
                                     transitionDuration: 800,

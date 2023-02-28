@@ -1,5 +1,7 @@
 import SImage from "@/components/SImage";
+import {API} from "@/public/variables";
 
+// This will fetch the latest photo as homepage photo.
 // const fetchHomePagePhoto = () => fetch(`https://steven-pocketbase.fly.dev/api/collections/photos/records?` + new URLSearchParams({
 //     page: '1',
 //     perPage: '1',
@@ -21,10 +23,11 @@ export default async function Home() {
             marginTop: '50px',
         }}>
             <SImage
+                // This will fetch the latest photo as homepage photo.
                 // alt={data.items[0].id}
                 // src={`https://steven-pocketbase.fly.dev/api/files/photos/${data.items[0].id}/${data.items[0].photo}`}
                 alt='Boston'
-                src='https://steven-pocketbase.fly.dev/api/files/tgyzgtr4jl9bqdf/4so2jjjkeff73r8/museum_jg54VZ3NDy.jpg'
+                src={`${API}/files/tgyzgtr4jl9bqdf/4so2jjjkeff73r8/museum_jg54VZ3NDy.jpg`}
                 transition={{
                     transitionDuration: 800,
                 }}

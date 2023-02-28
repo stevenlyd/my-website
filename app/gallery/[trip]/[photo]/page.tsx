@@ -1,9 +1,9 @@
 import SImage from "@/components/SImage";
 import {fetch} from "next/dist/compiled/@edge-runtime/primitives/fetch";
+import {API} from "@/public/variables";
 
-const api = process.env.API!
 
-const fetchPhoto = (slug: string) => fetch(`${api}/collections/photos/records?` + new URLSearchParams({
+const fetchPhoto = (slug: string) => fetch(`${API}/collections/photos/records?` + new URLSearchParams({
     filter: `slug='${slug}'`,
 }), {
     method: 'get',
@@ -26,7 +26,7 @@ export default async function Photo({params}: { params: { photo: string } }) {
             width: '100%',
             height: '100%',
         }}>
-            <SImage src={`${api}/files/photos/${photo.id}/${photo.photo}`} alt={photo.title}
+            <SImage src={`${API}/files/photos/${photo.id}/${photo.photo}`} alt={photo.title}
                     transition={{transitionDuration: 800}}
                     style={{
                         height: 'auto',
@@ -45,7 +45,7 @@ export default async function Photo({params}: { params: { photo: string } }) {
 export const dynamicParams = true
 
 export async function generateStaticParams({params: {trip}}: { params: { trip: string } }) {
-    const fetcher = () => fetch(`${api}/collections/trips/records?` + new URLSearchParams({
+    const fetcher = () => fetch(`${API}/collections/trips/records?` + new URLSearchParams({
         filter: `slug='${trip}'`,
         expand: 'photos',
     }), {

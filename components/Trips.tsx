@@ -3,6 +3,7 @@ import useSWR from 'swr'
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {useMediaQuery} from "@mui/material";
+import {API} from "@/public/variables";
 
 const fetcher = (url: string) => fetch(url + new URLSearchParams({
     sort: '-created',
@@ -14,8 +15,9 @@ const fetcher = (url: string) => fetch(url + new URLSearchParams({
     }
 }).then((res) => res.json())
 
+
 export default function Trips() {
-    const {data, error, isLoading} = useSWR('https://steven-pocketbase.fly.dev/api/collections/trips/records?', fetcher)
+    const {data, error, isLoading} = useSWR(`${API}/collections/trips/records?`, fetcher)
     const mobile = !useMediaQuery('(min-width:700px)')
     const currentPath = usePathname()
     return (

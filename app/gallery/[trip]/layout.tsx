@@ -1,4 +1,5 @@
 import React from "react";
+import {API} from "@/public/variables";
 
 export default function TripLayout({children,}: { children: React.ReactNode }) {
     return (
@@ -11,7 +12,7 @@ export default function TripLayout({children,}: { children: React.ReactNode }) {
 export const dynamicParams = true
 
 export async function generateStaticParams() {
-    const fetcher = () => fetch('https://steven-pocketbase.fly.dev/api/collections/trips/records?' + new URLSearchParams({
+    const fetcher = () => fetch(`${API}/collections/trips/records?` + new URLSearchParams({
         sort: '-created',
     }), {
         method: 'get',
