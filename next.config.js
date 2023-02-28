@@ -1,32 +1,31 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 
-  exportPathMap: async function (
-      defaultPathMap,
-      { dev, dir, outDir, distDir, buildId }
-  ) {
-    return {
-      '/': {page: '/'},
-      '/about': {page: '/about'},
-      '/gallery': {page: '/gallery'},
-    }
-  },
+    experimental: {
+        appDir: true,
+    },
 
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'steven-pocketbase.fly.dev',
-        port:'',
-        pathname: '/api/files/**',
-      },
-    ],
-  },
+    exportPathMap: async function (
+        defaultPathMap,
+        {dev, dir, outDir, distDir, buildId}
+    ) {
+        return {
+            '/': {page: '/'},
+            '/about': {page: '/about'},
+            '/gallery': {page: '/gallery'},
+        }
+    },
 
-  experimental: {
-    appDir: true,
-    scrollRestoration: true,
-  },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'steven-pocketbase.fly.dev',
+                port: '',
+                pathname: '/api/files/**',
+            },
+        ],
+    },
 
 }
 
