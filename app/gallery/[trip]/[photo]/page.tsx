@@ -27,7 +27,17 @@ export default async function Photo({params}: { params: { photo: string } }) {
             height: '100%',
         }}>
             <SImage src={`${api}/files/photos/${photo.id}/${photo.photo}`} alt={photo.title}
-                    transition={{transitionDuration: 800}}/>
+                    transition={{transitionDuration: 800}}
+                    style={{
+                        height: 'auto',
+                        width: 'auto',
+                        maxWidth: '100%',
+                        maxHeight: '75vh',
+                        margin: 'auto',
+                        justifySelf: 'center',
+                        boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
+                    }}
+            />
         </div>
     )
 }

@@ -30,15 +30,7 @@ export default function SImage(props: SImageProps) {
                         src={src} alt={alt}
                         width={1500}
                         height={1500}
-                        style={{
-                            height: 'auto',
-                            width: 'auto',
-                            maxWidth: '100%',
-                            maxHeight: '75vh',
-                            margin: 'auto',
-                            justifySelf: 'center',
-                            boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
-                        }}
+
                         {...rest}
                     />
                 </Fade>
