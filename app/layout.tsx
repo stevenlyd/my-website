@@ -65,7 +65,7 @@ export default function RootLayout({children,}: { children: React.ReactNode }) {
                     square={true}
                     elevation={0}
                     sx={{
-                        boxSizing:'border-box',
+                        boxSizing: 'border-box',
                         display: `${mobile ? 'flex' : 'block'}`,
                         flexDirection: `${mobile ? 'column' : 'row'}`,
                         transition: DEFAULT_TRANSITION,
