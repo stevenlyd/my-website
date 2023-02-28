@@ -1,4 +1,5 @@
 import Photos from "@/components/Photos";
+import {API} from "@/public/variables";
 
 const fetchPhotos = (url: string, slug: string) => fetch(url + new URLSearchParams({
     filter: `slug='${slug}'`,
@@ -14,7 +15,7 @@ const fetchPhotos = (url: string, slug: string) => fetch(url + new URLSearchPara
 
 export default async function Trips({params}: { params: { trip: string } }) {
     const tripSlug = params.trip
-    const data = await fetchPhotos(`https://steven-pocketbase.fly.dev/api/collections/trips/records?`, tripSlug)
+    const data = await fetchPhotos(`${API}/collections/trips/records?`, tripSlug)
     const photoArr = data.items[0].expand.photos
     return (
         <>
