@@ -14,7 +14,7 @@ export default function Photos({photos}: { photos: any[] }) {
                         width: '100%',
                         height: '100%',
                     }}>
-                        <Link href={`/gallery/${photo.expand.trip.slug}/${photo.slug}`}>
+                        <Link href={`/gallery/${photo.expand.trip.slug}/${photo.slug}`} scroll={false}>
                             <SImage
                                 src={`https://steven-pocketbase.fly.dev/api/files/photos/${photo.id}/${photo.photo}`}
                                 alt={photo.id}

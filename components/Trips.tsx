@@ -8,7 +8,7 @@ const fetcher = (url: string) => fetch(url + new URLSearchParams({
     sort: '-created',
 }), {
     method: 'get',
-    cache:'force-cache',
+    cache: 'force-cache',
     next: {
         revalidate: 60,
     }
@@ -31,10 +31,12 @@ export default function Trips() {
             {!isLoading && data.items.map((trip: any, index: number) => {
                 return (
                     <Link href={`/gallery/${trip.slug}`} key={trip.id} style={{
-                        textDecoration: `${currentPath?.includes(trip.slug) ? 'underline':'none'}`,
-                        textUnderlineOffset:'8px',
+                        textDecoration: `${currentPath?.includes(trip.slug) ? 'underline' : 'none'}`,
+                        textUnderlineOffset: '8px',
                         color: 'inherit',
-                    }}>
+                    }}
+                          scroll={false}
+                    >
                         <h3 style={{
                             zIndex: '1300',
                         }}>
