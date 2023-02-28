@@ -30,8 +30,8 @@ export default function Trips() {
         }}>
             {!isLoading && data.items.map((trip: any, index: number) => {
                 return (
-                    <Link href={`/gallery/${trip.id}`} key={trip.id} style={{
-                        textDecoration: `${currentPath === `/gallery/${trip.id}` ? 'underline':'none'}`,
+                    <Link href={`/gallery/${trip.slug}`} key={trip.id} style={{
+                        textDecoration: `${currentPath?.includes(trip.id) ? 'underline':'none'}`,
                         textUnderlineOffset:'8px',
                         color: 'inherit',
                     }}>
