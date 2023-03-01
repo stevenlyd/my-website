@@ -1,7 +1,7 @@
 import SImage from "@/components/SImage";
 import {fetch} from "next/dist/compiled/@edge-runtime/primitives/fetch";
 import {API} from "@/public/variables";
-
+import Exif from "@/components/Exif";
 
 const fetchPhoto = (slug: string) => fetch(`${API}/collections/photos/records?` + new URLSearchParams({
     filter: `slug='${slug}'`,
@@ -15,7 +15,6 @@ const fetchPhoto = (slug: string) => fetch(`${API}/collections/photos/records?` 
 
 export default async function Photo({params}: { params: { photo: string } }) {
     const photoSlug = params.photo
-
     const data = await fetchPhoto(photoSlug)
     const photo = data.items[0]
 
@@ -33,11 +32,13 @@ export default async function Photo({params}: { params: { photo: string } }) {
                         width: 'auto',
                         maxWidth: '100%',
                         maxHeight: '75vh',
-                        margin: 'auto',
+                        // margin: 'auto',
                         justifySelf: 'center',
                         boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
                     }}
             />
+                {/* @ts-expect-error Server Component */}
+                <Exif url={`${API}/files/photos/${photo.id}/${photo.photo}`}/>
         </div>
     )
 }
