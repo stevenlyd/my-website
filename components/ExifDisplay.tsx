@@ -10,7 +10,9 @@ import {ExifTags} from "ts-exif-parser";
 export default function ExifDisplay({exif, type = 'phone'}: { exif: ExifTags, type?: 'phone' | 'camera' | 'film' }) {
     const date = new Date(exif.DateTimeOriginal! * 1000)
     return (
-        <Fade in timeout={800}>
+        <Fade in timeout={800} style={{
+            transitionDelay: '0.5s',
+        }}>
             <List>
                 <ListItem>
                     <CameraAltIcon style={{marginRight: '5px'}}/>
