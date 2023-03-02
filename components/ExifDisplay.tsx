@@ -13,27 +13,33 @@ export default function ExifDisplay({exif, type = 'phone'}: { exif: ExifTags, ty
         <Fade in timeout={800} style={{
             transitionDelay: '0.5s',
         }}>
-            <List>
+            <List dense sx={{
+                margin: '15px 0px 0px 0px'
+            }}>
                 <ListItem>
-                    <CameraAltIcon style={{marginRight: '5px'}}/>
-                    <p>{exif.LensModel}</p>
+                    <CameraAltIcon />
+                    <span style={{marginLeft: '16px',}}>
+                    <p style={{
+                        margin: '0px'
+                    }}>{exif.LensModel}</p>
+                    </span>
                 </ListItem>
-                <ListItem>
-                    <IsoIcon style={{marginRight: '5px'}}/>
-                    <p>ISO{exif.ISO}</p>
-                </ListItem>
-                <ListItem>
-                    <CameraIcon style={{marginRight: '5px'}}/>
-                    <p>f/{Number(exif.FNumber).toFixed(1)}</p>
-                    <p></p>
-                </ListItem>
-                <ListItem>
-                    <ShutterSpeedIcon style={{marginRight: '5px'}}/>
-                    <p>1/{1 / Number(exif.ExposureTime)}</p>
-                </ListItem>
-                <ListItem>
-                    <ScheduleIcon style={{marginRight: '5px'}}/>
-                    <p>{date.toDateString()}</p>
+                <ListItem sx={{
+                    display: 'inline-flex',
+                }}>
+                    <CameraIcon />
+                    <span>
+                        <p style={{margin: '0px 0px 0px 16px',}}>{exif.FocalLengthIn35mmFormat}mm</p>
+                    </span>
+                    <span>
+                    <p style={{margin: '0px 0px 0px 16px',}}>ISO{exif.ISO}</p>
+                    </span>
+                    <span>
+                    <p style={{margin: '0px 0px 0px 16px',}}>f/{Number(exif.FNumber).toFixed(1)}</p>
+                    </span>
+                    <span>
+                    <p style={{margin: '0px 0px 0px 16px',}}>1/{1 / Number(exif.ExposureTime)}</p>
+                    </span>
                 </ListItem>
             </List>
         </Fade>

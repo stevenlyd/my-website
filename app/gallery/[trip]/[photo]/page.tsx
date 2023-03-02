@@ -21,6 +21,7 @@ export default async function Photo({params}: { params: { photo: string } }) {
     return (
         <div style={{
             display: 'flex',
+            flexDirection:'column',
             justifyContent: 'center',
             width: '100%',
             height: '100%',
@@ -31,8 +32,11 @@ export default async function Photo({params}: { params: { photo: string } }) {
                         height: 'auto',
                         width: 'auto',
                         maxWidth: '100%',
-                        maxHeight: '75vh',
-                        // margin: 'auto',
+                        maxHeight: '65vh',
+                        marginTop: '2vh',
+                        marginBottom: '2vh',
+                        marginLeft:'auto',
+                        marginRight:'auto',
                         justifySelf: 'center',
                         boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
                     }}
