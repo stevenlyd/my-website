@@ -39,7 +39,7 @@ export default function ExifDisplay({exif, type = 'phone'}: { exif: ExifTags, ty
                     <p style={{margin: '0px 0px 0px 16px',}}>f/{Number(exif.FNumber).toFixed(1)}</p>
                     </span>
                             <span>
-                    <p style={{margin: '0px 0px 0px 16px',}}>1/{1 / Number(exif.ExposureTime)}</p>
+                    <p style={{margin: '0px 0px 0px 16px',}}>1/{Number(exif.ExposureTime) >= 1 ? Number(exif.ExposureTime) : 1 / Number(exif.ExposureTime)}</p>
                     </span>
                         </ListItem>
                     </List>

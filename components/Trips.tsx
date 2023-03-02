@@ -21,16 +21,8 @@ export default function Trips() {
     const mobile = !useMediaQuery('(min-width:700px)')
     const currentPath = usePathname()
     return (
-        <div style={{
-            position: 'sticky',
-            top: '120px',
-            left: '0px',
-            display: 'flex',
-            flexDirection: `${mobile ? 'row' : 'column'}`,
-            justifyContent: `${mobile ? 'space-around' : 'start'}`,
-            margin: `${mobile ? '0px 0px 25px 0px' : '0px 25px 0px 0px'}`,
-        }}>
-            {!isLoading && data.items.map((trip: any, index: number) => {
+        <>
+                   {!isLoading && data.items.map((trip: any, index: number) => {
                 return (
                     <Link href={`/gallery/${trip.slug}`} key={trip.id} style={{
                         textDecoration: `${currentPath?.includes(trip.slug) ? 'underline' : 'none'}`,
@@ -45,7 +37,7 @@ export default function Trips() {
                         </h3>
                     </Link>
                 )
-            })}
-        </div>
+            })} 
+        </>
     )
 }

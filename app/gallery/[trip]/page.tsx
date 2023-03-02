@@ -19,7 +19,7 @@ export default async function Trips({params}: { params: { trip: string } }) {
     const photoArr = data.items[0].expand.photos
     return (
         <>
-            <Photos photos={photoArr}/>
+            <Photos photos={photoArr} layout={'list'}/>
         </>
     )
 }
