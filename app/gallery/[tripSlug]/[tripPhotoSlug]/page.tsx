@@ -49,9 +49,9 @@ export default async function TripPhoto({params}: { params: { tripPhotoSlug: str
 
 export const dynamicParams = true
 
-export async function generateStaticParams({params: {trip}}: { params: { trip: string } }) {
+export async function generateStaticParams({params: {tripSlug}}: { params: { tripSlug: string } }) {
     const fetcher = () => fetch(`${API}/collections/trips/records?` + new URLSearchParams({
-        filter: `slug='${trip}'`,
+        filter: `slug='${tripSlug}'`,
         expand: 'photos',
     }), {
         method: 'get',

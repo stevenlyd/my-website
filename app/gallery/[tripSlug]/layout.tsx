@@ -23,7 +23,7 @@ export async function generateStaticParams() {
     const paramsArr = data.items.map((item: any, index: number) => {
         return (
             {
-                trip: item.slug,
+                tripSlug: item.slug,
             }
         )
     })
