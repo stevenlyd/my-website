@@ -1,5 +1,3 @@
-import {fetch} from "next/dist/compiled/@edge-runtime/primitives/fetch";
-
 export const getImageBuffer = async (url: string) => {
     const response = await fetch(url, {method: 'get', cache:'force-cache'})
     const blob = await response.blob()

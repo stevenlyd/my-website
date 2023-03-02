@@ -1,5 +1,6 @@
 import {API} from "@/public/variables";
 import SImage from "@/components/SImage";
+import Exif from "@/components/Exif";
 
 const fetchPhoto = (slug: string) => fetch(`${API}/collections/iphone/records?` + new URLSearchParams({
     filter: `slug='${slug}'`,
@@ -39,7 +40,6 @@ export default async function IphonePhoto ({params: {iphonePhotoSlug}} :{params:
                         boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
                     }}
             />
-            {/*/!* @ts-expect-error Server Component *!/*/}
             {/*<Exif url={`${API}/files/iphone/${photo.id}/${photo.photo}`}/>*/}
         </div>
     )
