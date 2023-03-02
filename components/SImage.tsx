@@ -41,6 +41,7 @@ export default function SImage(props: SImageProps) {
                     key={key} src={src} alt={alt}
                     width={1500}
                     height={1500}
+                    quality={100}
                     style={{
                         height: 'auto',
                         width: 'auto',
