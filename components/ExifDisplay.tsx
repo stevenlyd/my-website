@@ -27,6 +27,7 @@ export default function ExifDisplay({
                     <List dense sx={{
                         margin: `${mobile ? '0px 0px 0px 0px' : '15px 0px 0px 0px'}`,
                     }}>
+                        {location && 
                         <ListItem>
                             <LocationOnIcon />
                             <span style={{ marginLeft: '16px', }}>
@@ -38,7 +39,7 @@ export default function ExifDisplay({
                                     <h4 style={{ margin: '0px', }}>{location?.name}{city ? ` , ${city[0]}` : ''}</h4>
                                 }
                             </span>
-                        </ListItem>
+                        </ListItem>}
                         <ListItem>
                             <CameraAltIcon />
                             <span style={{ marginLeft: '16px', }}>
