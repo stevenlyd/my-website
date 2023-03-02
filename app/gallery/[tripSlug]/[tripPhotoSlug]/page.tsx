@@ -1,5 +1,4 @@
 import SImage from "@/components/SImage";
-import {fetch} from "next/dist/compiled/@edge-runtime/primitives/fetch";
 import {API} from "@/public/variables";
 import Exif from "@/components/Exif";
 

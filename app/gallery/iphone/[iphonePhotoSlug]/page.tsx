@@ -39,6 +39,8 @@ export default async function IphonePhoto ({params: {iphonePhotoSlug}} :{params:
                         boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
                     }}
             />
+            {/*/!* @ts-expect-error Server Component *!/*/}
+            {/*<Exif url={`${API}/files/iphone/${photo.id}/${photo.photo}`}/>*/}
         </div>
     )
 }
