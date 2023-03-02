@@ -12,8 +12,8 @@ const fetchPhoto = (slug: string) => fetch(`${API}/collections/photos/records?` 
     }
 }).then((res) => res.json())
 
-export default async function TripPhoto({params}: { params: { tripPhotoSlug: string } }) {
-    const photoSlug = params.tripPhotoSlug
+export default async function TripPhoto({params:{tripPhotoSlug}}: {params: {tripPhotoSlug: string}}) {
+    const photoSlug = tripPhotoSlug
     const data = await fetchPhoto(photoSlug)
     const photo = data.items[0]
 
@@ -48,7 +48,7 @@ export default async function TripPhoto({params}: { params: { tripPhotoSlug: str
 
 export const dynamicParams = true
 
-export async function generateStaticParams({params: {tripSlug}}: { params: { tripSlug: string } }) {
+export async function generateStaticParams({params: {tripSlug}}: any) {
     const fetcher = () => fetch(`${API}/collections/trips/records?` + new URLSearchParams({
         filter: `slug='${tripSlug}'`,
         expand: 'photos',

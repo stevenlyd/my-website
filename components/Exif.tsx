@@ -2,7 +2,7 @@ import {getImageBuffer} from "@/components/myFunctions";
 import {ExifParserFactory} from "ts-exif-parser";
 import ExifDisplay from "@/components/ExifDisplay";
 
-export default async function Exif ({url}:{url:string}) {
+export default async function Exif({url}: { url: string }): Promise<JSX.Element> {
     const buffer = await getImageBuffer(url)
     const exif = ExifParserFactory.create(buffer).parse()
     return (
