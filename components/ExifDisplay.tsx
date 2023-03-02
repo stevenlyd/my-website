@@ -9,39 +9,109 @@ import {ExifTags} from "ts-exif-parser";
 
 export default function ExifDisplay({exif, type = 'phone'}: { exif: ExifTags, type?: 'phone' | 'camera' | 'film' }) {
     const date = new Date(exif.DateTimeOriginal! * 1000)
-    return (
-        <Fade in timeout={800} style={{
-            transitionDelay: '0.5s',
-        }}>
-            <List dense sx={{
-                margin: '15px 0px 0px 0px'
-            }}>
-                <ListItem>
-                    <CameraAltIcon />
-                    <span style={{marginLeft: '16px',}}>
-                    <p style={{
-                        margin: '0px'
-                    }}>{exif.LensModel}</p>
-                    </span>
-                </ListItem>
-                <ListItem sx={{
-                    display: 'inline-flex',
+
+    switch (type) {
+        case 'phone':
+            return (
+                <Fade in timeout={800} style={{
+                    transitionDelay: '0.5s',
                 }}>
-                    <CameraIcon />
-                    <span>
+                    <List dense sx={{
+                        margin: '15px 0px 0px 0px'
+                    }}>
+                        <ListItem>
+                            <CameraAltIcon/>
+                            <span style={{marginLeft: '16px',}}>
+                    <p style={{margin: '0px'}}>{exif.LensModel}</p>
+                    </span>
+                        </ListItem>
+                        <ListItem sx={{
+                            display: 'inline-flex',
+                        }}>
+                            <CameraIcon/>
+                            <span>
                         <p style={{margin: '0px 0px 0px 16px',}}>{exif.FocalLengthIn35mmFormat}mm</p>
                     </span>
-                    <span>
+                            <span>
                     <p style={{margin: '0px 0px 0px 16px',}}>ISO{exif.ISO}</p>
                     </span>
-                    <span>
+                            <span>
                     <p style={{margin: '0px 0px 0px 16px',}}>f/{Number(exif.FNumber).toFixed(1)}</p>
                     </span>
-                    <span>
+                            <span>
                     <p style={{margin: '0px 0px 0px 16px',}}>1/{1 / Number(exif.ExposureTime)}</p>
                     </span>
-                </ListItem>
-            </List>
-        </Fade>
-    )
+                        </ListItem>
+                    </List>
+                </Fade>
+            )
+        case 'camera':
+            return (
+                <Fade in timeout={800} style={{
+                    transitionDelay: '0.5s',
+                }}>
+                    <List dense sx={{
+                        margin: '15px 0px 0px 0px'
+                    }}>
+                        <ListItem>
+                            <CameraAltIcon/>
+                            <span style={{marginLeft: '16px',}}>
+                    <p style={{margin: '0px'}}>{exif.LensModel}</p>
+                    </span>
+                        </ListItem>
+                        <ListItem sx={{
+                            display: 'inline-flex',
+                        }}>
+                            <CameraIcon/>
+                            <span>
+                        <p style={{margin: '0px 0px 0px 16px',}}>{exif.FocalLengthIn35mmFormat}mm</p>
+                    </span>
+                            <span>
+                    <p style={{margin: '0px 0px 0px 16px',}}>ISO{exif.ISO}</p>
+                    </span>
+                            <span>
+                    <p style={{margin: '0px 0px 0px 16px',}}>f/{Number(exif.FNumber).toFixed(1)}</p>
+                    </span>
+                            <span>
+                    <p style={{margin: '0px 0px 0px 16px',}}>1/{1 / Number(exif.ExposureTime)}</p>
+                    </span>
+                        </ListItem>
+                    </List>
+                </Fade>
+            )
+        case 'film':
+            return (
+                <Fade in timeout={800} style={{
+                    transitionDelay: '0.5s',
+                }}>
+                    <List dense sx={{
+                        margin: '15px 0px 0px 0px'
+                    }}>
+                        <ListItem>
+                            <CameraAltIcon/>
+                            <span style={{marginLeft: '16px',}}>
+                    <p style={{margin: '0px'}}>{exif.LensModel}</p>
+                    </span>
+                        </ListItem>
+                        <ListItem sx={{
+                            display: 'inline-flex',
+                        }}>
+                            <CameraIcon/>
+                            <span>
+                        <p style={{margin: '0px 0px 0px 16px',}}>{exif.FocalLengthIn35mmFormat}mm</p>
+                    </span>
+                            <span>
+                    <p style={{margin: '0px 0px 0px 16px',}}>ISO{exif.ISO}</p>
+                    </span>
+                            <span>
+                    <p style={{margin: '0px 0px 0px 16px',}}>f/{Number(exif.FNumber).toFixed(1)}</p>
+                    </span>
+                            <span>
+                    <p style={{margin: '0px 0px 0px 16px',}}>1/{1 / Number(exif.ExposureTime)}</p>
+                    </span>
+                        </ListItem>
+                    </List>
+                </Fade>
+            )
+    }
 }
