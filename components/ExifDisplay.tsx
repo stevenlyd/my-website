@@ -16,6 +16,7 @@ export default function ExifDisplay({
 }: { exif: ExifTags, location?: any, type?: 'phone' | 'camera' | 'film' }) {
     const date = new Date(exif.DateTimeOriginal! * 1000)
     const city = location?.vicinity?.split(', ').slice(-1)
+    const placeName = location?.name
     const mobile = !useMediaQuery('(min-width:700px)')
 
     switch (type) {
@@ -31,12 +32,12 @@ export default function ExifDisplay({
                         <ListItem>
                             <LocationOnIcon />
                             <span style={{ marginLeft: '16px', }}>
-                                {mobile ?
+                                {mobile && city?.length + placeName?.length >= 24?
                                     <>
-                                        <h4 style={{ margin: '0px', }}>{location?.name}</h4>
+                                        <h4 style={{ margin: '0px', }}>{placeName}</h4>
                                         <h4 style={{ margin: '0px', }}>{city ? `${city[0]}` : ''}</h4>
                                     </> :
-                                    <h4 style={{ margin: '0px', }}>{location?.name}{city ? ` , ${city[0]}` : ''}</h4>
+                                    <h4 style={{ margin: '0px', }}>{placeName}{city ? ` , ${city[0]}` : ''}</h4>
                                 }
                             </span>
                         </ListItem>}
