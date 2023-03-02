@@ -13,8 +13,8 @@ const fetchPhoto = (slug: string) => fetch(`${API}/collections/photos/records?` 
     }
 }).then((res) => res.json())
 
-export default async function Photo({params}: { params: { photo: string } }) {
-    const photoSlug = params.photo
+export default async function TripPhoto({params}: { params: { tripPhotoSlug: string } }) {
+    const photoSlug = params.tripPhotoSlug
     const data = await fetchPhoto(photoSlug)
     const photo = data.items[0]
 
@@ -62,7 +62,7 @@ export async function generateStaticParams({params: {trip}}: { params: { trip: s
     const paramsArr = data.items[0].expand.photos.map((item: any, index: number) => {
         return (
             {
-                photo: item.slug,
+                tripPhotoSlug: item.slug,
             }
         )
     })
