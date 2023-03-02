@@ -11,9 +11,6 @@ const fetchPlaceID = (coordinates: string) => fetch(process.env.GOOGLE_API! + '/
     {
         method: 'get',
         cache: 'force-cache',
-        next: {
-            revalidate: 60,
-        }
     }).then((res) => res.json())
 
 const fetchPlaceDetail = (placeID: string) => fetch(process.env.GOOGLE_API! + '/place/details/json?' + new URLSearchParams({
@@ -23,9 +20,6 @@ const fetchPlaceDetail = (placeID: string) => fetch(process.env.GOOGLE_API! + '/
     key: process.env.GOOGLE_API_KEY!,
 }), {
     method: 'get',
-    next: {
-        revalidate: 60,
-    }
 }).then((res) => res.json())
 
 export default async function Exif({ url }: { url: string }): Promise<JSX.Element> {

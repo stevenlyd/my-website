@@ -1,6 +1,6 @@
 'use client'
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
-import { Fade, List, ListItem } from "@mui/material";
+import { Fade, List, ListItem, useMediaQuery } from "@mui/material";
 import CameraIcon from '@mui/icons-material/Camera';
 import IsoIcon from '@mui/icons-material/Iso';
 import ShutterSpeedIcon from '@mui/icons-material/ShutterSpeed';
@@ -11,11 +11,13 @@ import { ExifTags } from "ts-exif-parser";
 
 export default function ExifDisplay({
     exif,
-    location=undefined,
+    location = undefined,
     type = 'phone'
 }: { exif: ExifTags, location?: any, type?: 'phone' | 'camera' | 'film' }) {
     const date = new Date(exif.DateTimeOriginal! * 1000)
     const city = location?.vicinity?.split(', ').slice(-1)
+    const mobile = !useMediaQuery('(min-width:700px)')
+
     switch (type) {
         case 'phone':
             return (
@@ -23,12 +25,18 @@ export default function ExifDisplay({
                     transitionDelay: '0.5s',
                 }}>
                     <List dense sx={{
-                        margin: '15px 0px 0px 0px'
+                        margin: `${mobile ? '0px 0px 0px 0px' : '15px 0px 0px 0px'}`,
                     }}>
                         <ListItem>
                             <LocationOnIcon />
                             <span style={{ marginLeft: '16px', }}>
-                                <h4 style={{ margin: '0px', }}>{location?.name}{city ? ` , ${city[0]}` : ''}</h4>
+                                {mobile ?
+                                    <>
+                                        <h4 style={{ margin: '0px', }}>{location?.name}</h4>
+                                        <h4 style={{ margin: '0px', }}>{city ? `${city[0]}` : ''}</h4>
+                                    </> :
+                                    <h4 style={{ margin: '0px', }}>{location?.name}{city ? ` , ${city[0]}` : ''}</h4>
+                                }
                             </span>
                         </ListItem>
                         <ListItem>
@@ -105,7 +113,7 @@ export default function ExifDisplay({
                             <ListItem>
                                 <CameraAltIcon />
                                 <span style={{ marginLeft: '16px', }}>
-                                    <p style={{ margin: '0px' }}>Medium-format Film Camera</p>
+                                    <p style={{ margin: '0px' }}>Fujifilm GF670</p>
                                 </span>
                             </ListItem>
                         </List>
@@ -122,7 +130,7 @@ export default function ExifDisplay({
                             <ListItem>
                                 <CameraAltIcon />
                                 <span style={{ marginLeft: '16px', }}>
-                                    <p style={{ margin: '0px' }}>135mm Film Camera</p>
+                                    <p style={{ margin: '0px' }}>Leica MP</p>
                                 </span>
                             </ListItem>
                         </List>
