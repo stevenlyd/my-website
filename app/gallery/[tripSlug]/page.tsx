@@ -13,8 +13,8 @@ const fetchPhotos = (url: string, slug: string) => fetch(url + new URLSearchPara
     }
 }).then((res) => res.json())
 
-export default async function Trips({params}: { params: { trip: string } }) {
-    const tripSlug = params.trip
+export default async function Trips({params}: { params: { tripSlug: string } }) {
+    const tripSlug = params.tripSlug
     const data = await fetchPhotos(`${API}/collections/trips/records?`, tripSlug)
     const photoArr = data.items[0].expand.photos
     return (
