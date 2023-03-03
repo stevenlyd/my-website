@@ -36,7 +36,7 @@ export default async function Exif({ url }: { url: string }): Promise<JSX.Elemen
         if (placeIDRes.status === 'OK') {
             const placeID = placeIDRes?.results[0]?.place_id
             placeDetailRes = await fetchPlaceDetail(placeID)
-            const city = placeDetailRes.result.vicinity.split(', ')[1]
+            const city = placeDetailRes.result.vicinity.split(', ')[1].slice(-1).trim()
             location = {
                 placeName: placeDetailRes?.result?.name,
                 city

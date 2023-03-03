@@ -20,8 +20,6 @@ export default function ExifDisplay({
     type = 'phone'
 }: { exif: ExifTags, location?: location, type?: 'phone' | 'camera' | 'film' }) {
     const date = new Date(exif.DateTimeOriginal! * 1000)
-    // Old way of getting city name
-    // const city = location?.vicinity?.split(', ').slice(-1)
     const city = location?.city
     const placeName = location?.placeName
     const mobile = !useMediaQuery('(min-width:700px)')
