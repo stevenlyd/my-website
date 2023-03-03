@@ -7,17 +7,25 @@ import ShutterSpeedIcon from '@mui/icons-material/ShutterSpeed';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { ExifTags } from "ts-exif-parser";
+import { location } from '@/types/types';
 
+const addressLength = (location: location):number => {
+    const length = (location?.placeName?? '').length + (location?.city?? '').length
+    return length
+}
 
 export default function ExifDisplay({
     exif,
     location = undefined,
     type = 'phone'
-}: { exif: ExifTags, location?: any, type?: 'phone' | 'camera' | 'film' }) {
+}: { exif: ExifTags, location?: location, type?: 'phone' | 'camera' | 'film' }) {
     const date = new Date(exif.DateTimeOriginal! * 1000)
-    const city = location?.vicinity?.split(', ').slice(-1)
-    const placeName = location?.name
+    // Old way of getting city name
+    // const city = location?.vicinity?.split(', ').slice(-1)
+    const city = location?.city
+    const placeName = location?.placeName
     const mobile = !useMediaQuery('(min-width:700px)')
+    const length = addressLength(location)
 
     switch (type) {
         case 'phone':
@@ -28,16 +36,16 @@ export default function ExifDisplay({
                     <List dense sx={{
                         margin: `${mobile ? '0px 0px 0px 0px' : '15px 0px 0px 0px'}`,
                     }}>
-                        {location && 
+                        { length > 0 &&
                         <ListItem>
                             <LocationOnIcon />
                             <span style={{ marginLeft: '16px', }}>
-                                {mobile && city?.length + placeName?.length >= 24?
+                                {mobile && addressLength(location) >= 24?
                                     <>
                                         <h4 style={{ margin: '0px', }}>{placeName}</h4>
-                                        <h4 style={{ margin: '0px', }}>{city ? `${city[0]}` : ''}</h4>
+                                        <h4 style={{ margin: '0px', }}>{city ? `${city}` : ''}</h4>
                                     </> :
-                                    <h4 style={{ margin: '0px', }}>{placeName}{city ? ` , ${city[0]}` : ''}</h4>
+                                    <h4 style={{ margin: '0px', }}>{placeName}{city ? ` , ${city}` : ''}</h4>
                                 }
                             </span>
                         </ListItem>}
@@ -61,7 +69,7 @@ export default function ExifDisplay({
                                 <p style={{ margin: '0px 0px 0px 16px', }}>f/{Number(exif.FNumber).toFixed(1)}</p>
                             </span>
                             <span>
-                                <p style={{ margin: '0px 0px 0px 16px', }}>1/{Number(exif.ExposureTime) >= 1 ? Number(exif.ExposureTime) : 1 / Number(exif.ExposureTime)}</p>
+                                <p style={{ margin: '0px 0px 0px 16px', }}>1/{Number(exif.ExposureTime) >= 1 ? Number(exif.ExposureTime) : 1 / Number(exif.ExposureTime)}s</p>
                             </span>
                         </ListItem>
                     </List>
@@ -95,7 +103,7 @@ export default function ExifDisplay({
                                 <p style={{ margin: '0px 0px 0px 16px', }}>f/{Number(exif.FNumber).toFixed(1)}</p>
                             </span>
                             <span>
-                                <p style={{ margin: '0px 0px 0px 16px', }}>1/{1 / Number(exif.ExposureTime)}</p>
+                                <p style={{ margin: '0px 0px 0px 16px', }}>1/{Number(exif.ExposureTime) >= 1 ? Number(exif.ExposureTime) : 1 / Number(exif.ExposureTime)}s</p>
                             </span>
                         </ListItem>
                     </List>
