@@ -1,5 +1,5 @@
 'use client'
-import { Grid, useMediaQuery } from "@mui/material";
+import { Fade, Grid, useMediaQuery } from "@mui/material";
 import { usePathname } from "next/navigation";
 import Trips from "@/components/Trips";
 import Link from "next/link";
@@ -19,6 +19,7 @@ export default function ({ children }: { children: React.ReactNode }) {
     } else {
         return (
             <Grid container direction={mobile ? 'column' : 'row'}>
+                <Fade in timeout={800}>
                 <Grid item xs={2}>
                     <div style={{
                         position: 'sticky',
@@ -47,10 +48,15 @@ export default function ({ children }: { children: React.ReactNode }) {
                         }
                     </div>
                 </Grid>
+                </Fade>
+                <Fade in timeout={800} style={{
+                    transitionDelay: '0.5s',
+                }}>
                 <Grid item
                     xs={10}>
                     {children}
                 </Grid>
+                </Fade>
             </Grid>
         )
     }

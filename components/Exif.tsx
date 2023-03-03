@@ -1,12 +1,11 @@
 import { getImageBuffer } from "@/components/myFunctions";
 import { ExifParserFactory } from "ts-exif-parser";
 import ExifDisplay from "@/components/ExifDisplay";
-import {location} from "@/types/types"
+import { location } from "@/types/types"
 
 const fetchPlaceID = (coordinates: string) => fetch(process.env.GOOGLE_API! + '/geocode/json?' + new URLSearchParams({
     latlng: coordinates,
-    location_type: 'ROOFTOP',
-    result_type: 'tourist_attraction|establishment',
+    result_type: 'tourist_attraction',
     key: process.env.GOOGLE_API_KEY!,
 }),
     {
@@ -16,7 +15,7 @@ const fetchPlaceID = (coordinates: string) => fetch(process.env.GOOGLE_API! + '/
 
 const fetchPlaceDetail = (placeID: string) => fetch(process.env.GOOGLE_API! + '/place/details/json?' + new URLSearchParams({
     place_id: placeID,
-    result_type: 'tourist_attraction',
+    // result_type: 'tourist_attraction',
     fields: 'vicinity,name',
     key: process.env.GOOGLE_API_KEY!,
 }), {
@@ -34,15 +33,21 @@ export default async function Exif({ url }: { url: string }): Promise<JSX.Elemen
     if (exifTags?.GPSLatitude) {
         const coordinates = `${exifTags.GPSLatitude}, ${exifTags.GPSLongitude}`
         const placeIDRes = await fetchPlaceID(coordinates)
-        const placeID = placeIDRes?.results[0]?.place_id
-        const city = placeIDRes?.results[0]?.formatted_address.split(',')[1].trim()
-        // const addressArr = placeIDRes?.plus_code?.compound_code.split(', ')
-        // const city = addressArr[addressArr.length-2]
-        placeDetailRes = await fetchPlaceDetail(placeID)
-        console.log(placeIDRes)
-        location = {
-            placeName: placeDetailRes?.result?.name,
-            city
+        if (placeIDRes.status === 'OK') {
+            const placeID = placeIDRes?.results[0]?.place_id
+            placeDetailRes = await fetchPlaceDetail(placeID)
+            const city = placeDetailRes.result.vicinity.split(', ')[1]
+            location = {
+                placeName: placeDetailRes?.result?.name,
+                city
+            }
+        } else {
+            const address = placeIDRes?.plus_code?.compound_code
+            const city = address.substring(8)
+            location = {
+                placeName: undefined,
+                city
+            }
         }
     }
 

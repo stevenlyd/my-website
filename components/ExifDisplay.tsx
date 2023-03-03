@@ -9,8 +9,8 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { ExifTags } from "ts-exif-parser";
 import { location } from '@/types/types';
 
-const addressLength = (location: location):number => {
-    const length = (location?.placeName?? '').length + (location?.city?? '').length
+const addressLength = (location: location): number => {
+    const length = (location?.placeName ?? '').length + (location?.city ?? '').length
     return length
 }
 
@@ -36,19 +36,22 @@ export default function ExifDisplay({
                     <List dense sx={{
                         margin: `${mobile ? '0px 0px 0px 0px' : '15px 0px 0px 0px'}`,
                     }}>
-                        { length > 0 &&
-                        <ListItem>
-                            <LocationOnIcon />
-                            <span style={{ marginLeft: '16px', }}>
-                                {mobile && addressLength(location) >= 24?
-                                    <>
-                                        <h4 style={{ margin: '0px', }}>{placeName}</h4>
-                                        <h4 style={{ margin: '0px', }}>{city ? `${city}` : ''}</h4>
-                                    </> :
-                                    <h4 style={{ margin: '0px', }}>{placeName}{city ? ` , ${city}` : ''}</h4>
-                                }
-                            </span>
-                        </ListItem>}
+                        {length > 0 &&
+                            <ListItem>
+                                <LocationOnIcon />
+                                <span style={{ marginLeft: '16px', }}>
+                                    {placeName ?
+                                        (mobile && length >= 24 ?
+                                            <>
+                                                <h4 style={{ margin: '0px', }}>{placeName}</h4>
+                                                <h4 style={{ margin: '0px', }}>{city ? `${city}` : ''}</h4>
+                                            </> :
+                                            <h4 style={{ margin: '0px', }}>{placeName}{city ? ` , ${city}` : ''}</h4>)
+                                            :
+                                                city && <h4 style={{ margin: '0px', }}>{city ? `${city}` : ''}</h4>
+                                    }
+                                </span>
+                            </ListItem>}
                         <ListItem>
                             <CameraAltIcon />
                             <span style={{ marginLeft: '16px', }}>
