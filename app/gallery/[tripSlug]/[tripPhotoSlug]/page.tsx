@@ -1,6 +1,4 @@
-import SImage from "@/components/SImage";
 import {API} from "@/public/variables";
-import Exif from "@/components/Exif";
 import PhotoDetail from "@/components/PhotoDetail";
 
 const fetchPhoto = (slug: string) => fetch(`${API}/collections/photos/records?` + new URLSearchParams({
