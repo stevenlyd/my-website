@@ -26,7 +26,6 @@ export default function SImage(props: SImageProps) {
                     transitionDelay: `${transitionDelay}s`,
                     display: 'inherit',
                     overflow:'hidden',
-                    
                 }}>
                     <Image
                         src={src} alt={alt}
