@@ -68,9 +68,9 @@ export default function ExifDisplay({
                             </span>
                             <span>
                                 <p style={{ margin: '0px 0px 0px 16px', }}>f/{Number(exif.FNumber).toFixed(1)}</p>
-                            </span>
+                            </span>             
                             <span>
-                                <p style={{ margin: '0px 0px 0px 16px', }}>1/{Number(exif.ExposureTime) >= 1 ? Number(exif.ExposureTime) : `1/${Number(exif.ExposureTime)}`}s</p>
+                                <p style={{ margin: '0px 0px 0px 16px', }}>{Number(exif.ExposureTime) >= 1 ? Number(exif.ExposureTime) : `1/${1/Number(exif.ExposureTime)}`}s</p>
                             </span>
                         </ListItem>
                     </List>
