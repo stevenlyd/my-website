@@ -1,5 +1,4 @@
 import { API } from "@/public/variables"
-import { useState } from "react"
 import SImage from "./SImage"
 import Exif from "./Exif"
 
@@ -10,15 +9,14 @@ export default function PhotoDetail({ photo }: any) {
             flexDirection: 'column',
             justifyContent: 'center',
             width: '100%',
-            height: '100%',
+            maxHeight: 'calc(100vh - 180px - 75px)',
         }}>
-            <SImage src={`${API}/files/iphone/${photo.id}/${photo.photo}`} alt={photo.title}
+            <SImage src={`${API}/files/${photo.collectionName}/${photo.id}/${photo.photo}`} alt={photo.title}
                 transition={{ transitionDuration: 800 }}
                 style={{
                     height: 'auto',
                     width: 'auto',
                     maxWidth: '100%',
-                    maxHeight: '65vh',
                     marginTop: '2vh',
                     marginBottom: '2vh',
                     marginLeft: 'auto',
@@ -31,7 +29,7 @@ export default function PhotoDetail({ photo }: any) {
                 quality={100}
             />
             {/* @ts-expect-error Server Component */}
-            <Exif url={`${API}/files/iphone/${photo.id}/${photo.photo}`} />
+            <Exif url={`${API}/files/${photo.collectionName}/${photo.id}/${photo.photo}`} />
         </div>
     )
 }

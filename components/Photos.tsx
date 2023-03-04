@@ -62,7 +62,7 @@ export default function Photos({ photos, layout }: { photos: any[], layout: 'lis
                             const delay = Math.floor(index / 3) * 0.1
                             return (
                                 <div style={{
-                                    width: '33.33%',
+                                    width: 'calc(100% / 3)',
                                 }}>
                                     <div key={photo.id} style={{
                                         position: 'relative',
