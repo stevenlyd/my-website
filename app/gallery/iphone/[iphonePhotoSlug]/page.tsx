@@ -6,9 +6,9 @@ const fetchPhoto = (slug: string) => fetch(`${API}/collections/iphone/records?` 
 }), {
     method: 'get',
     cache: 'force-cache',
-    next: {
-        revalidate: 60,
-    }
+    // next: {
+    //     revalidate: 60,
+    // }
 }).then((res) => res.json())
 
 export default async function IphonePhoto({ params: { iphonePhotoSlug } }: { params: { iphonePhotoSlug: string } }) {

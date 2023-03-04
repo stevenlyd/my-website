@@ -6,9 +6,9 @@ const fetchPhotos = () => fetch(`${API}/collections/iphone/records?` + new URLSe
 }), {
     method: 'get',
     cache: 'force-cache',
-    next: {
-        revalidate: 60,
-    }
+    // next: {
+    //     revalidate: 60,
+    // }
 }).then((res) => res.json())
 
 export default async function Iphone() {

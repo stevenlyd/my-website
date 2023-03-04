@@ -7,9 +7,9 @@ const fetchPhoto = (slug: string) => fetch(`${API}/collections/photos/records?` 
 }), {
     method: 'get',
     cache: 'force-cache',
-    next: {
-        revalidate: 60,
-    }
+    // next: {
+    //     revalidate: 60,
+    // }
 }).then((res) => res.json())
 
 export default async function TripPhoto({params:{tripPhotoSlug}}: {params: {tripPhotoSlug: string}}) {
