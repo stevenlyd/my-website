@@ -34,6 +34,9 @@ export default function Photos({photos, layout}: { photos: any[], layout: 'list'
                                             justifySelf: 'center',
                                             boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
                                         }}
+                                        width={1500}
+                                        height={1500}
+                                        quality={100}
                                     />
                                 </Link>
                             </div>
@@ -43,11 +46,17 @@ export default function Photos({photos, layout}: { photos: any[], layout: 'list'
             )
         case 'grid':
             return (
-                <ImageList cols={3}>
+                <ImageList cols={3} gap={24} sx={{
+                    margin: '0px',
+                }}>
                     {
                         photos && photos.map((photo: any, index: number) => {
                             return (
-                                <ImageListItem key={photo.id}>
+                                <ImageListItem key={photo.id} style={{
+                                    overflow: 'hidden',
+                                    aspectRatio: '1 / 1',
+                                    boxShadow: '0 10px 20px -4px rg(0 0 0 / 50%)', 
+                                }}>
                                     <Link href={`/gallery/iphone/${photo.slug}`}>
                                         <SImage
                                             src={`${API}/files/iphone/${photo.id}/${photo.photo}`}
@@ -57,14 +66,19 @@ export default function Photos({photos, layout}: { photos: any[], layout: 'list'
                                                 transitionDelay: index * 0.1,
                                             }}
                                             style={{
-                                                height: 'auto',
-                                                width: 'auto',
-                                                maxWidth: '100%',
-                                                maxHeight: '50vh',
-                                                margin: 'auto',
+                                                position: 'absolute',
+                                                top: '0px',
+                                                left: '0px',
                                                 justifySelf: 'center',
-                                                boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
+                                                objectFit: 'cover',
+                                                objectPosition: 'center center',
+                                                boxShadow: '0 10px 20px -4px rg(0 0 0 / 50%)',
                                             }}
+                                            fill
+                                            sizes='(max-width: 768px) 100vw,
+                                            (max-width: 1200px) 50vw,
+                                            33vw'
+                                            quality={100}
                                         />
                                     </Link>
                                 </ImageListItem>

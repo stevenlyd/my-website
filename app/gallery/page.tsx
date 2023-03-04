@@ -19,6 +19,9 @@ export default function Gallery() {
                 justifySelf: 'center',
                 boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
             }}
+            width={1500}
+            height={1500}
+            quality={100}
         />
     )
 }

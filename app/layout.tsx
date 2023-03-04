@@ -74,7 +74,7 @@ export default function RootLayout({children,}: { children: React.ReactNode }) {
                         minHeight: '100vh',
                         maxWidth: '100vw',
                         maxHeight: '100%',
-                        padding: `${mobile ? '120px 25px 25px 25px' : '120px 75px 75px 75px'}`,
+                        padding: `${mobile ? '70px 25px 25px 25px' : '180px 75px 75px 75px'}`,
                     }}>
                     <Navbar toggleColorMode={colorMode.toggleColorMode} themeMode={theme.palette.mode}/>
                     {children}
