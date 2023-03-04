@@ -25,34 +25,27 @@ export default function SImage(props: SImageProps) {
                 <Fade key={key} in timeout={transitionDuration} style={{
                     transitionDelay: `${transitionDelay}s`,
                     display: 'inherit',
+                    overflow:'hidden',
+                    
                 }}>
                     <Image
                         src={src} alt={alt}
-                        width={1500}
-                        height={1500}
-
+                        placeholder='empty'
                         {...rest}
                     />
                 </Fade>
         )
     } else {
         return (
+            <div style={{
+                overflow: 'hidden',
+            }}>
                 <Image
                     key={key} src={src} alt={alt}
-                    width={1500}
-                    height={1500}
-                    quality={100}
-                    style={{
-                        height: 'auto',
-                        width: 'auto',
-                        maxWidth: '100%',
-                        maxHeight: '75vh',
-                        margin: 'auto',
-                        justifySelf: 'center',
-                        boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
-                    }}
+                    placeholder='empty'
                     {...rest}
                 />
+            </div>
         )
     }
 }

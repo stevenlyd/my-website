@@ -25,9 +25,9 @@ export default function Navbar(navbarProps: NavbarProps) {
                 display: 'flex',
                 justifyContent: 'space-between',
                 position: 'fixed',
-                height: `${scrollPos >= 120 ? '70px' : mobile ? '100px' : '120px'}`,
+                height: `${scrollPos >= (mobile ? 90.52 : 60) ? (mobile ? '50px' : '70px') : (mobile ? '70px' : '120px')}`,
                 transition: 'height 0.5s ease-in-out, opacity 0.5s linear, box-shadow 0.5s linear, background-color 0.25s linear',
-                boxShadow: `${scrollPos >= 120 || mobile ? 'rgb(0 0 0 / 15%) 0px 10px 6px' : 'none'}`,
+                boxShadow: `${scrollPos >= 120 ? 'rgb(0 0 0 / 15%) 0px 10px 6px' : 'none'}`,
                 backgroundColor: 'background.paper',
                 opacity: `${scrollPos >= 120 ? '0.88' : '1'}`,
                 width: '100%',
@@ -42,7 +42,8 @@ export default function Navbar(navbarProps: NavbarProps) {
             <Link href='/' color='inherit' style={{
                 textDecoration: 'none',
                 color: 'inherit',
-                paddingRight: '2vw'
+                paddingRight: '2vw',
+                // maxHeight: '100%',
             }}>
                 <h2>
                     Steven Liu

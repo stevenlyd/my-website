@@ -18,9 +18,13 @@ export default function ({ children }: { children: React.ReactNode }) {
         )
     } else {
         return (
-            <Grid container direction={mobile ? 'column' : 'row'}>
+            <Grid container direction={mobile ? 'column' : 'row'} 
+            sx={{
+                width: '100%',
+            }}>
                 <Fade in timeout={800}>
-                <Grid item xs={2}>
+                <Grid item xs={2} sx={{
+                }}>
                     <div style={{
                         position: 'sticky',
                         top: '120px',

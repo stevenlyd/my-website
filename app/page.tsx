@@ -20,7 +20,6 @@ export default async function Home() {
         <div style={{
             display: 'flex',
             justifyContent: 'center',
-            marginTop: '50px',
         }}>
             <SImage
                 // This will fetch the latest photo as homepage photo.
@@ -38,8 +37,12 @@ export default async function Home() {
                     maxHeight: '75vh',
                     margin: 'auto',
                     justifySelf: 'center',
+                    alignSelf: 'top',
                     boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
                 }}
+                width={1500}
+                height={1500}
+                quality={100}
             />
         </div>
     )
