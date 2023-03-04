@@ -1,6 +1,7 @@
 import SImage from "@/components/SImage";
 import {API} from "@/public/variables";
 import Exif from "@/components/Exif";
+import PhotoDetail from "@/components/PhotoDetail";
 
 const fetchPhoto = (slug: string) => fetch(`${API}/collections/photos/records?` + new URLSearchParams({
     filter: `slug='${slug}'`,
@@ -18,34 +19,7 @@ export default async function TripPhoto({params:{tripPhotoSlug}}: {params: {trip
     const photo = data.items[0]
 
     return (
-        <div style={{
-            display: 'flex',
-            flexDirection:'column',
-            justifyContent: 'center',
-            width: '100%',
-            height: '100%',
-        }}>
-            <SImage src={`${API}/files/photos/${photo.id}/${photo.photo}`} alt={photo.title}
-                    transition={{transitionDuration: 800}}
-                    style={{
-                        height: 'auto',
-                        width: 'auto',
-                        maxWidth: '100%',
-                        maxHeight: '65vh',
-                        marginTop: '2vh',
-                        marginBottom: '2vh',
-                        marginLeft:'auto',
-                        marginRight:'auto',
-                        justifySelf: 'center',
-                        boxShadow: '0px 10px 20px -4px rgb(0 0 0 / 50%)',
-                    }}
-                    width={1500}
-                    height={1500}
-                    quality={100}
-            />
-                {/* @ts-expect-error Server Component */}
-                <Exif url={`${API}/files/photos/${photo.id}/${photo.photo}`}/>
-        </div>
+        <PhotoDetail photo={photo}/>
     )
 }
 
