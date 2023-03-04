@@ -51,6 +51,7 @@ export default function Photos({photos, layout}: { photos: any[], layout: 'list'
                 }}>
                     {
                         photos && photos.map((photo: any, index: number) => {
+                            const delay = Math.floor(index/3) * 0.1
                             return (
                                 <ImageListItem key={photo.id} style={{
                                     overflow: 'hidden',
@@ -63,7 +64,7 @@ export default function Photos({photos, layout}: { photos: any[], layout: 'list'
                                             alt={photo.id}
                                             transition={{
                                                 transitionDuration: 800,
-                                                transitionDelay: index * 0.1,
+                                                transitionDelay: delay,
                                             }}
                                             style={{
                                                 position: 'absolute',
