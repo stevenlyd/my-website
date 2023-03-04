@@ -75,10 +75,10 @@ export default function Photos({photos, layout}: { photos: any[], layout: 'list'
                                                 boxShadow: '0 10px 20px -4px rg(0 0 0 / 50%)',
                                             }}
                                             fill
-                                            sizes='(max-width: 768px) 100vw,
-                                            (max-width: 1200px) 50vw,
-                                            33vw'
-                                            quality={100}
+                                            sizes='(max-width: 768px) 33.33vw,
+                                            (max-width: 1200px) 33.33vw,
+                                            33.33vw'
+                                            quality={60}
                                         />
                                     </Link>
                                 </ImageListItem>
