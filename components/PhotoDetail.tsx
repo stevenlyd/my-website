@@ -24,7 +24,7 @@ export default function PhotoDetail({ photo }: any) {
                     marginLeft: 'auto',
                     marginRight: 'auto',
                     justifySelf: 'center',
-                    boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
+                    boxShadow: '0px 10px 20px -4px rgb(0 0 0 / 50%)',
                 }}
                 width={1500}
                 height={1500}

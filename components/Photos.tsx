@@ -32,7 +32,7 @@ export default function Photos({photos, layout}: { photos: any[], layout: 'list'
                                             maxHeight: '50vh',
                                             margin: 'auto',
                                             justifySelf: 'center',
-                                            boxShadow: '0 10px 20px -4px rgb(0 0 0 / 50%)',
+                                            boxShadow: '0px 10px 20px -4px rgb(0 0 0 / 50%)',
                                         }}
                                         width={1500}
                                         height={1500}
@@ -46,17 +46,23 @@ export default function Photos({photos, layout}: { photos: any[], layout: 'list'
             )
         case 'grid':
             return (
-                <ImageList cols={3} gap={24} sx={{
-                    margin: '0px',
+                <div style={{
+                    width:'100%',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'left',
                 }}>
                     {
                         photos && photos.map((photo: any, index: number) => {
                             const delay = Math.floor(index/3) * 0.1
                             return (
-                                <ImageListItem key={photo.id} style={{
-                                    overflow: 'hidden',
+                                <div style={{
+                                    width: '33.33%',
+                                }}>
+                                <div key={photo.id} style={{
+                                    position: 'relative',
                                     aspectRatio: '1 / 1',
-                                    boxShadow: '0 10px 20px -4px rg(0 0 0 / 50%)', 
+                                    margin: '12px',
                                 }}>
                                     <Link href={`/gallery/iphone/${photo.slug}`}>
                                         <SImage
@@ -67,26 +73,20 @@ export default function Photos({photos, layout}: { photos: any[], layout: 'list'
                                                 transitionDelay: delay,
                                             }}
                                             style={{
-                                                position: 'absolute',
-                                                top: '0px',
-                                                left: '0px',
-                                                justifySelf: 'center',
                                                 objectFit: 'cover',
-                                                objectPosition: 'center center',
-                                                boxShadow: '0 10px 20px -4px rg(0 0 0 / 50%)',
+                                                objectPosition: '50% 50%',
+                                                boxShadow: '0px 10px 20px -4px rgb(0 0 0 / 50%)',
                                             }}
                                             fill
-                                            sizes='(max-width: 768px) 33.33vw,
-                                            (max-width: 1200px) 33.33vw,
-                                            33.33vw'
                                             quality={60}
                                         />
-                                    </Link>
-                                </ImageListItem>
+                                    </Link> 
+                                </div>
+                                </div>
                             )
                         })
                     }
-                </ImageList>
+                </div>
             )
     }
 }
