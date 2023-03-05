@@ -34,7 +34,7 @@ export default async function Home() {
                     height: 'auto',
                     width: 'auto',
                     maxWidth: '100%',
-                    maxHeight: '75vh',
+                    maxHeight: 'calc(100vh - 180px - 75px)',
                     margin: 'auto',
                     justifySelf: 'center',
                     alignSelf: 'top',

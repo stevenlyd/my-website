@@ -24,7 +24,7 @@ export default function Navbar(navbarProps: NavbarProps) {
                 boxSizing: 'border-box',
                 display: 'flex',
                 justifyContent: 'space-between',
-                position: `${currentPath?.match(/\/gallery\/[\w-]+\/[\w-]+/g) ? 'absolute' : 'fixed'}`,
+                position: `${currentPath?.match(/\/gallery\/[\w-]+\/[\w-]+/g) || !currentPath?.match(/\/gallery\/[\w-]+/g) ? 'absolute' : 'fixed'}`,
                 height: `${scrollPos >= (mobile ? 160.52 : 120) ? (mobile ? '50px' : '70px') : (mobile ? '70px' : '120px')}`,
                 transition: 'height 0.5s ease-in-out, opacity 0.5s linear, box-shadow 0.5s linear, background-color 0.25s linear',
                 boxShadow: `${scrollPos >= 120 ? 'rgb(0 0 0 / 15%) 0px 10px 6px' : 'none'}`,
