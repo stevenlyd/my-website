@@ -17,6 +17,9 @@
             @media only screen and (max-width: 700px) {
                 margin: auto;
                 max-height: calc(100vh - 70px - 25px);
+                //Temporary solution
+                position: relative;
+                top: -20px;
             }
 
             @keyframes fade-in {
