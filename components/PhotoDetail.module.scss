@@ -1,35 +1,52 @@
-.imageContainer {
-    max-height: calc(100vh - 180px - 75px);
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.pageContainer {
+    height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 
     @media only screen and (max-width: 700px) {
-        max-height: calc(100vh - 70px - 25px);
+        margin: auto;
     }
+        .imageContainer {
+            max-height: calc(100vh - 180px - 75px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: auto;
+            width: 100%;
+            @media only screen and (max-width: 700px) {
+                margin: auto;
+                max-height: calc(100vh - 70px - 25px);
+                position: relative;
+                top: -59.227px;
+            }
 
-    @keyframes fade-in {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
+            @keyframes fade-in {
+                0% {
+                    opacity: 0;
+                }
 
-    .image {
-        height: auto;
-        width: auto;
-        overflow: hidden;
-        animation: fade-in 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        max-width: 100%;
-        margin-top: 2vh;
-        margin-bottom: 2vh;
-        margin-left: auto;
-        margin-right: auto;
-        justify-self: center;
-        box-shadow: 0px 10px 20px -4px rgb(0 0 0 / 50%);
-        z-index: 1300;
-    }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            .image {
+                height: auto;
+                width: auto;
+                overflow: hidden;
+                animation: fade-in 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                justify-self: center;
+                box-shadow: 0px 10px 20px -4px rgb(0 0 0 / 50%);
+                z-index: 1300;
+
+            @media only screen and (max-width: 700px) {
+                margin-top: 2vh;
+                margin-bottom: 2vh;
+            }
+            }
+        }
 }

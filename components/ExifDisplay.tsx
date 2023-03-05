@@ -36,8 +36,10 @@ export default function ExifDisplay({
                     }}>
                         {length > 0 &&
                             <ListItem>
-                                <LocationOnIcon />
-                                <span style={{ marginLeft: '16px', }}>
+                                <LocationOnIcon sx={{
+                                    fontSize: '12px',
+                                }}/>
+                                <span style={{ marginLeft: '16px', fontSize: '12px',}}>
                                     {placeName ?
                                         (mobile && length >= 24 ?
                                             <>
@@ -51,15 +53,20 @@ export default function ExifDisplay({
                                 </span>
                             </ListItem>}
                         <ListItem>
-                            <CameraAltIcon />
-                            <span style={{ marginLeft: '16px', }}>
+                            <CameraAltIcon sx={{
+                                    fontSize: '12px',
+                                }}/>
+                            <span style={{ marginLeft: '16px', fontSize: '12px',}}>
                                 <p style={{ margin: '0px' }}>{exif.LensModel?.split('back')[0]}</p>
                             </span>
                         </ListItem>
                         <ListItem sx={{
                             display: 'inline-flex',
+                            fontSize: '12px',
                         }}>
-                            <CameraIcon />
+                            <CameraIcon sx={{
+                                    fontSize: '12px',
+                                }}/>
                             <span>
                                 <p style={{ margin: '0px 0px 0px 16px', }}>{exif.FocalLengthIn35mmFormat}mm</p>
                             </span>
