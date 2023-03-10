@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { API } from '@/public/variables'
 import MyImage from './MyImage'
+import styles from './Photos.module.scss'
 
 export default function Photos({
   photos,
@@ -39,8 +40,8 @@ export default function Photos({
                       src={`${API}/files/photos/${photo.id}/${photo.photo}`}
                       alt={photo.id}
                       transition={{
-                        transitionDuration: 800,
-                        transitionDelay: delay,
+                        duration: 800,
+                        delay: delay,
                       }}
                       style={{
                         height: 'auto',
@@ -65,37 +66,28 @@ export default function Photos({
     case 'grid':
       return (
         <div
-          style={{
-            width: '100%',
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'left',
-          }}
+        className={styles.Grid}
         >
           {photos &&
             photos.map((photo: any, index: number) => {
               const delay = Math.floor(index / 3) * 100
+              const mobileDelay = Math.floor(index / 2) * 100
               return (
                 <div
-                  style={{
-                    width: 'calc(100% / 3)',
-                  }}
+                className={styles.Divider}
                 >
                   <div
                     key={photo.id}
-                    style={{
-                      position: 'relative',
-                      aspectRatio: '1 / 1',
-                      margin: '12px',
-                    }}
+                    className={styles.ImageContainer}
                   >
                     <Link href={`/gallery/iphone/${photo.slug}`}>
                       <MyImage
                         src={`${API}/files/iphone/${photo.id}/${photo.photo}`}
                         alt={photo.id}
                         transition={{
-                          transitionDuration: 800,
-                          transitionDelay: delay,
+                          duration: 800,
+                          delay: delay,
+                          mobileDelay: mobileDelay,
                         }}
                         style={{
                           objectFit: 'cover',

@@ -11,4 +11,8 @@
   animation-name: fade-in;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   animation-fill-mode: forwards;
+  animation-delay: var(--delay, 0ms);
+  @media only screen and (max-width: 700px) {
+    animation-delay: var(--mobileDelay, var(--delay));
+  }
 }

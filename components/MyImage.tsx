@@ -3,8 +3,9 @@ import { CSSProperties } from 'react'
 import styles from './MyImage.module.scss'
 
 interface TransitionProps {
-  transitionDuration: number
-  transitionDelay?: number
+  duration: number
+  delay?: number
+  mobileDelay?: number
 }
 
 interface MyImageProps {
@@ -21,7 +22,7 @@ export default function MyImage(props: MyImageProps) {
   const { src, alt, key, transition, style = {}, ...rest } = props
 
   if (transition) {
-    const { transitionDuration, transitionDelay = 0 } = transition
+    const { duration, delay = 0, mobileDelay = 0 } = transition
     return (
       <Image
         className={styles.Image}
@@ -29,8 +30,9 @@ export default function MyImage(props: MyImageProps) {
         alt={alt}
         style={{
           ...style,
-          animationDuration: `${transitionDuration}ms`,
-          animationDelay: `${transitionDelay}ms`,
+          animationDuration: `${duration}ms`,
+          ['--delay' as any]: `${delay}ms`,
+          ['--mobileDelay' as any]: `${mobileDelay}ms`,
         }}
         {...rest}
       />

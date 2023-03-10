@@ -1,0 +1,49 @@
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.List {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .ImageContainer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 24px 0px 24px 0px;
+    }
+}
+
+.Grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  .Divider {
+    width: calc(100% / 3);
+    @media only screen and (max-width: 700px) {
+    width: calc(100% / 2);
+      }
+    .ImageContainer {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        margin: 12px;
+        .Image {
+            opacity: 0;
+            animation-name: fade-in;
+            animation-duration: 800ms;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            animation-fill-mode: forwards;
+            animation-delay: var(--delay, 0ms);
+            @media only screen and (max-width: 700px) {
+               animation-delay: var(--mobileDelay, 0ms); 
+            }
+        }
+    }
+  }
+}
